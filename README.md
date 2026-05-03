@@ -1,2 +1,1 @@
-# stepik_selenium_python_course_4
-Репозиторий модуля 4 курса по selenium на stepik.org
+Репозиторий модуля 4 из курса ["Автоматизация тестирования с помощью Selenium и Python"](https://stepik.org/course/575/) на stepik.
