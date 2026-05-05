@@ -1,4 +1,4 @@
-from conftest import browser
+#from conftest import browser
 from .base_page import BasePage
 from .locators import LoginPageLocators
 
