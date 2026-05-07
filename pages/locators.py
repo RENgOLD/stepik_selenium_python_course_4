@@ -14,3 +14,7 @@ class ProductPageLocators:
     PRODUCT_NAME_IN_MESSAGE = (By.CSS_SELECTOR,
                                'div.alert-success>div.alertinner>strong')
     CART_VALUE = (By.CSS_SELECTOR, 'div.alert-info>div.alertinner>p>strong')
+
+class BasePageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
