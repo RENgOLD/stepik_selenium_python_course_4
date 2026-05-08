@@ -31,5 +31,7 @@ class ProductPage(BasePage):
             'Success message is presented, but should not be'
 
     def should_disappear(self):
-        #TODO не понятно что должно исчезать на странице
-        assert True
+        assert self.is_disappeared(
+            *ProductPageLocators.PRODUCT_NAME_IN_MESSAGE), \
+            'Success message is presented, but should be disappear'
+
