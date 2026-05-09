@@ -3,7 +3,7 @@ from selenium.common import TimeoutException
 from selenium.common.exceptions import (NoSuchElementException,
                                         NoAlertPresentException)
 from selenium.webdriver.support import expected_conditions as EC
-from .locators import BasePageLocators
+from .locators import BasePageLocators, ProfilePageLocators
 import pytest
 import math
 
@@ -67,5 +67,30 @@ class BasePage:
             'Login link is not presented.'
 
     def go_to_basket_page(self):
-        basket_button = self.browser.find_element(*BasePageLocators.BASKET_BUTTON)
+        basket_button = self.browser.find_element(
+            *BasePageLocators.BASKET_BUTTON)
         basket_button.click()
+
+    def remove_current_profile(self, password):
+        user_icon = self.browser.find_element(*BasePageLocators.USER_ICON)
+        user_icon.click()
+
+        delete_profile_button = self.browser.find_element(
+            *ProfilePageLocators.DELETE_PROFILE_BUTTON)
+        delete_profile_button.click()
+
+        password_confirm_textbox = self.browser.find_element(
+            *ProfilePageLocators.PASSWORD_CONFIRM_TEXTBOX)
+        password_confirm_textbox.send_keys(password)
+
+        delete_confirm_button = self.browser.find_element(
+            *ProfilePageLocators.DELETE_CONFIRM_BUTTON)
+        delete_confirm_button.click()
+
+        self.is_element_present(
+            *BasePageLocators.PROFILE_DELETE_SUCCESS_MESSAGE)
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), \
+            "User icon is not presented," \
+            " probably unauthorised user"
